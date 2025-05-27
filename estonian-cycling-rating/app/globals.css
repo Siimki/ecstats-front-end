@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #fafafa;
+  background-image: radial-gradient(circle at 100% 0%, rgba(0, 0, 0, 0.02) 0%, transparent 25%),
+    radial-gradient(circle at 0% 80%, rgba(0, 0, 0, 0.02) 0%, transparent 25%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-color: #121212;
+  background-image: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 0% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 25%);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+/* Custom component styles */
+.cycling-card {
+  @apply bg-white rounded-xl shadow-md border-0 overflow-hidden transition-all duration-300;
+}
+
+.dark .cycling-card {
+  @apply bg-gray-800 shadow-md border-0;
+}
+
+.cycling-card:hover {
+  @apply shadow-lg transform -translate-y-1;
+}
+
+.cycling-button {
+  @apply rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-md;
+}
+
+.cycling-nav-item {
+  @apply px-4 py-2 rounded-full font-medium transition-all duration-300;
+}
+
+.cycling-nav-item:hover {
+  @apply bg-white shadow-md dark:bg-gray-800;
+}
+
+.cycling-profile {
+  @apply relative rounded-full overflow-hidden border-4 border-white shadow-lg dark:border-gray-800;
+}
+
+.cycling-table {
+  @apply w-full border-collapse;
+}
+
+.cycling-table th {
+  @apply py-3 px-4 text-left font-semibold text-gray-700 border-b dark:text-gray-300 dark:border-gray-700;
+}
+
+.cycling-table td {
+  @apply py-3 px-4 border-b border-gray-100 dark:border-gray-700;
+}
+
+.cycling-table tr:hover {
+  @apply bg-gray-50 dark:bg-gray-700;
+}
+
+.cycling-stat-card {
+  @apply relative overflow-hidden rounded-xl p-4 flex flex-col items-center justify-center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dark .cycling-stat-card {
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(31, 41, 55, 0.7) 100%);
+  border: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.cycling-stat-card::before {
+  content: "";
+  @apply absolute top-0 left-0 w-full h-1 bg-black;
+}
+
+.dark .cycling-stat-card::before {
+  @apply bg-white;
+}
+
+.cycling-badge {
+  @apply inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.cycling-badge-dark {
+  @apply bg-black/10 text-black dark:bg-white/10 dark:text-white;
+}
+
+.cycling-badge-gray {
+  @apply bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300;
+}
+
+.cycling-badge-light {
+  @apply bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300;
+}
+
+/* Decorative elements */
+.cycling-wheel {
+  @apply absolute opacity-5 rounded-full border-8 border-dashed border-black dark:border-white;
+  animation: spin-slow 60s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4a5568;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Monochrome gradients */
+.mono-gradient-dark {
+  background: linear-gradient(135deg, #111 0%, #333 100%);
+}
+
+.mono-gradient-light {
+  background: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
+}
+
+.dark .mono-gradient-light {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+}
+
+.mono-gradient-gray {
+  background: linear-gradient(135deg, #888 0%, #aaa 100%);
+}
