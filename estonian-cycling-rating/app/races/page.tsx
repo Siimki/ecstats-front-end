@@ -156,7 +156,8 @@ function RaceCard({ race }: { race: any }) {
             <p className="text-sm text-muted-foreground dark:text-gray-400">Temperature: {race.temperature}°C</p>
             <p className="text-sm text-muted-foreground dark:text-gray-400">Participants: {race.participantCount}</p>
           </div>
-          <Link href={`/riders/${race.id}`}>
+          {/* Link to the race details page */}
+          <Link href={`/races/${race.id}`}>
             <div className="border-2 border-black dark:border-white w-12 h-12 flex items-center justify-center rotate-45 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
               <span className="text-xl -rotate-45 dark:text-white">P</span>
             </div>
