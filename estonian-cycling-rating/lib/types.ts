@@ -22,7 +22,7 @@ export type HomePageRace = {
     name: string;
     team: string;
     birthplace: string;
-    activeSince: number;     // year
+    activeSince: number; 
     rankingPoints: number;
     rankingPlace: number;
   };
@@ -99,7 +99,7 @@ export type HomePageRace = {
       races: number
       wins: number
       podiums: number
-      points: number // Use `points`, NOT `seasonPoints`
+      points: number 
     }[]
     results: RiderResult[]
     topResults: {
@@ -127,7 +127,6 @@ export type HomePageRace = {
     startTime: string;
     temperature: number;
     totalParticipants: number;
-    // Add more direct fields if needed
   };
   
   export type RaceResultRow = {
@@ -138,4 +137,18 @@ export type HomePageRace = {
     time?: string;
     points: number;
   };
+  
+  export type RiderRaceResult = {
+    raceName: string
+    position: string
+  }
+  
+  export type RidersTop100 = {
+    riderId: number
+    firstName: string
+    lastName: string
+    team: string
+    points: number
+    lastRaces: RiderRaceResult[]
+  }
   
