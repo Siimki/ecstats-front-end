@@ -1,13 +1,11 @@
 // libs/api-client.ts
 import type { RidersTop100 } from "@/lib/types"
-
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
-
 import { RaceProfile } from "./types";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337/api";
+
 export async function fetchStats() {
-    const res = await fetch("http://localhost:1337/api/stats", {
+    const res = await fetch(`${API_BASE}/stats`, {
       cache: "no-store",
     });
     if (!res.ok) throw new Error("Failed to fetch stats");
@@ -15,7 +13,7 @@ export async function fetchStats() {
 }
 
 export async function fetchHomepageRaceStats() {
-  const res = await fetch("http://localhost:1337/api/homepagestats", {
+  const res = await fetch(`${API_BASE}/homepagestats`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch stats");
@@ -23,7 +21,7 @@ export async function fetchHomepageRaceStats() {
 }
 // --- RIDERS ---
 export async function fetchRiderProfile(riderId: number, year?: number) {
-  const url = new URL("http://localhost:1337/api/riderprofile");
+  const url = new URL(`${API_BASE}/riderprofile`);
 
   // Add query params
   url.searchParams.set("riderId", riderId.toString());
@@ -40,7 +38,7 @@ export async function fetchRiderProfile(riderId: number, year?: number) {
 }
 
 export async function fetchRaceProfile(raceId: number): Promise<RaceProfile> {
-  const url = new URL("http://localhost:1337/api/raceprofile");
+  const url = new URL(`${API_BASE}/raceprofile`);
   url.searchParams.set("raceId", raceId.toString());
 
   const res = await fetch(url.toString(), {
@@ -53,7 +51,7 @@ export async function fetchRaceProfile(raceId: number): Promise<RaceProfile> {
 }
 
 export async function fetchTop100Riders() {
-  const res = await fetch("http://localhost:1337/api/top100riders", {
+  const res = await fetch(`${API_BASE}/top100riders`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch stats");
@@ -61,7 +59,7 @@ export async function fetchTop100Riders() {
 }
 
 export async function fetchRidersByQuery(query: string): Promise<RidersTop100[]> {
-  const res = await fetch(`http://localhost:1337/api/riders?q=${encodeURIComponent(query)}`, {
+  const res = await fetch(`${API_BASE}/riders?q=${encodeURIComponent(query)}`, {
     cache: "no-store",
   })
   if (!res.ok) throw new Error("Failed to search riders")
