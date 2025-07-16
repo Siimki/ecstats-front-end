@@ -37,19 +37,13 @@ import type { RaceProfile } from "@/lib/types"
 
 export default function RaceDetailClient({ raceData }: { raceData: RaceProfile }) {
 
-
-      
-  console.log(raceData)
-  console.log("raceData.race", raceData.race)
-
   const raceDate = new Date(raceData.race.startTime)
   const [currentPage, setCurrentPage] = useState(1)
   const [searchTerm, setSearchTerm] = useState("")
   const [activeTab, setActiveTab] = useState("all")
   const [selectedTeams, setSelectedTeams] = useState<string[]>([])
-
   const allResults = raceData.results.map(r => ({
-    position: r.position,
+    position: r.position === 0 ? "DNF" : r.position,
     riderId: r.riderId,
     rider: r.riderName,
     team: r.team,
@@ -285,7 +279,7 @@ function ResultsTable({
         : "bg-white text-black border border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-500"
     }`}
   >
-    {result.position}
+  {result.position}
   </span>
 </td>
 
