@@ -96,13 +96,13 @@ const homepageStats = await fetchHomepageRaceStats();
                 raceId={race.race_id}
                 raceName={race.race_name}
                 date={race.date}
-                winnerId={race.first_place}
+                winnerId={race.first_place_id}
                 winnerName={race.first_place_name}
                 winnerTeam="" // add later if needed
-                secondId={race.second_place}
+                secondId={race.second_place_id}
                 secondName={race.second_place_name}
                 secondTeam=""
-                thirdId={race.third_place}
+                thirdId={race.third_place_id}
                 thirdName={race.third_place_name}
                 thirdTeam=""
               />
@@ -122,7 +122,7 @@ const homepageStats = await fetchHomepageRaceStats();
               <CardContent className="p-0">
                 <div className="divide-y dark:divide-gray-700">
                   <UpcomingRaceItem
-                    raceId={4}
+                    raceId={"4"}
                     raceName="Tartu Rattaralli"
                     date="June 1, 2025"
                     location="Tartu"
@@ -130,7 +130,7 @@ const homepageStats = await fetchHomepageRaceStats();
                     temperature={18}
                   />
                   <UpcomingRaceItem
-                    raceId={5}
+                    raceId={"5"}
                     raceName="Filter Temposari"
                     date="June 4, 2025"
                     location="Tallinn"
@@ -138,7 +138,7 @@ const homepageStats = await fetchHomepageRaceStats();
                     temperature={20}
                   />
                   <UpcomingRaceItem
-                    raceId={6}
+                    raceId={"6"}
                     raceName=" Alutaguse Rattamaraton"
                     date="June 7, 2025"
                     location="Alutaguse"
@@ -178,8 +178,7 @@ function NewsSection() {
               <div className="cycling-wheel w-[150px] h-[150px] -bottom-[75px] -right-[75px] border-white/10"></div>
               <h3 className="text-lg font-bold mb-2 dark:text-white">Estonian Cycling Progress</h3>
               <p className="text-gray-600 dark:text-gray-400 line-clamp-2">
-                How has Estonian timetrail progressed the last 10 years. 2010 we had 2 riders passing the 45km/h
-                barrier, 2025 we have 20 different riders passing the barrier
+                Capybara cycling team just launched in 2025
               </p>
               <div className="flex justify-between items-center mt-4">
                 <span className="text-sm text-gray-500 dark:text-gray-400">May 15, 2025</span>
@@ -237,16 +236,16 @@ function RaceResultItem({
   thirdName,
   thirdTeam,
 }: {
-  raceId: number
+  raceId: string
   raceName: string
   date: string
-  winnerId: number
+  winnerId: string
   winnerName: string
   winnerTeam: string
-  secondId: number
+  secondId: string
   secondName: string
   secondTeam: string
-  thirdId: number
+  thirdId: string
   thirdName: string
   thirdTeam: string
 }) {
@@ -339,7 +338,7 @@ function UpcomingRaceItem({
   category,
   temperature,
 }: {
-  raceId: number
+  raceId: string
   raceName: string
   date: string
   location: string
@@ -438,7 +437,7 @@ function RankingItem({
   category,
 }: {
   rank: number
-  riderId: number
+  riderId: string
   name: string
   team: string
   points: number

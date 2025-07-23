@@ -88,7 +88,7 @@ export default function RidersClient({ top100 }: Props) {
 }
 
 type RiderCardProps = {
-  id: number
+  id: string
   name: string
   team: string
   points: number

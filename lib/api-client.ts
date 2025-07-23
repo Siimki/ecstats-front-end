@@ -20,7 +20,7 @@ export async function fetchHomepageRaceStats() {
   return res.json();
 }
 // --- RIDERS ---
-export async function fetchRiderProfile(riderId: number, year?: number) {
+export async function fetchRiderProfile(riderId: string, year?: number) {
   const url = new URL(`${API_BASE}/riderprofile`);
 
   // Add query params
@@ -37,7 +37,7 @@ export async function fetchRiderProfile(riderId: number, year?: number) {
   return res.json();
 }
 
-export async function fetchRaceProfile(raceId: number): Promise<RaceProfile> {
+export async function fetchRaceProfile(raceId: string): Promise<RaceProfile> {
   const url = new URL(`${API_BASE}/raceprofile`);
   url.searchParams.set("raceId", raceId.toString());
 
@@ -67,3 +67,4 @@ export async function fetchRidersByQuery(query: string): Promise<RidersTop100[]>
   const data = await res.json()
   return Array.isArray(data) ? data : [] // safeguard
 }
+    

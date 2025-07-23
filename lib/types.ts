@@ -1,24 +1,24 @@
 export type HomePageRace = {
-    race_id: number;
+    race_id: string;
     race_name: string;
     date: string;
-    first_place: number;
+    first_place_id: string;
     first_place_name: string;
-    second_place: number;
+    second_place_id: string;
     second_place_name: string;
-    third_place: number;
+    third_place_id: string;
     third_place_name: string;
   }
 
   export type HomePageRankingRider = {
-    rider_id: number
+    rider_id: string
     name: string
     points: number
     team: string
   }
   
   export type RiderProfile = {
-    id: number;
+    id: string;
     name: string;
     team: string;
     birthplace: string;
@@ -65,13 +65,13 @@ export type HomePageRace = {
     category: string
     position: number
     points: number
-    raceId: number
+    raceId: string
     type: string
   }
   
   export interface FullRiderProfile {
     profile: {
-      id: number
+      id: string
       name: string
       team: string
       birthplace: string
@@ -116,7 +116,7 @@ export type HomePageRace = {
   };
   
   export type RaceDetails = {
-    id: number;
+    id: string;
     date: string;
     name: string;
     category: string;
@@ -131,7 +131,7 @@ export type HomePageRace = {
   
   export type RaceResultRow = {
     position: number;
-    riderId: number;
+    riderId: string;
     riderName: string;
     team: string;
     time?: string;
@@ -144,7 +144,7 @@ export type HomePageRace = {
   }
   
   export type RidersTop100 = {
-    riderId: number
+    riderId: string
     firstName: string
     lastName: string
     team: string

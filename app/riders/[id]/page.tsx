@@ -16,8 +16,7 @@ interface RiderProfilePageProps {
 }
 
 export default async function RiderProfilePage({ params }: RiderProfilePageProps) {
-  const riderId = Number(params.id)
-  const riderProfile: FullRiderProfile = await fetchRiderProfile(riderId, 2024);
+  const riderProfile: FullRiderProfile = await fetchRiderProfile(params.id, 2024);
   const uniqueYears = Array.from(
     new Set(riderProfile.seasonStats.map(s => s.year))
   );

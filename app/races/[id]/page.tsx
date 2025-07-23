@@ -695,8 +695,8 @@ import { fetchRaceProfile } from "@/lib/api-client"
 import RaceDetailClient from "./RaceDetailClient"
 
 export default async function RaceDetailPage({ params }: { params: { id: string } }) {
-  const raceId = Number.parseInt(params.id)
-  const raceData = await fetchRaceProfile(raceId)
+// const raceId = Number.parseInt(params.id)
+  const raceData = await fetchRaceProfile(params.id)
 
   return <RaceDetailClient raceData={raceData} />
 }
